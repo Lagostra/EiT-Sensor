@@ -68,6 +68,7 @@ void loop() {
     iaqcore.read(&eco2,&stat,&resist,&etvoc);
 
     if (stat != 0x00) {
+      Serial.print("Status: 0x"); Serial.println(stat, HEX);
       delay(5000);
       return;
     }
