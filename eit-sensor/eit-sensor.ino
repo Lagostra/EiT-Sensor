@@ -5,7 +5,6 @@
 #include "iAQcore.h"
 #include <SoftwareSerial.h>
 
-
 SoftwareSerial ublox(10, 11);
 /*
  * Create an nbiot instance using default settings, which is the Telenor NB-IoT
@@ -27,9 +26,15 @@ int REMOTE_PORT = 1234;
 
 iAQcore iaqcore;
 
+bool sensorWarm = false;
+const int ledPin = 3;
+
 void setup() {
   Serial.begin(9600);
   while (!Serial);
+
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, HIGH);
 
   ublox.begin(9600);
   
@@ -67,6 +72,9 @@ void loop() {
       return;
     }
 
+    sensorWarm = true;
+    digitalWrite(ledPin, LOW);
+
     const int capacity = JSON_OBJECT_SIZE(2);
     StaticJsonDocument<capacity> doc;
     doc["co2"] = eco2;
@@ -84,7 +92,6 @@ void loop() {
       Serial.println("Failed sending data");
     }*/
 
-    // Wait specified time before sending again (see definition above)
     delay(60 * 1000);
   } else {
     // Not connected yet. Wait 5 seconds before retrying.
