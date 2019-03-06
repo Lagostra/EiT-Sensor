@@ -93,7 +93,7 @@ void loop() {
       Serial.println("Failed sending data");
     }*/
 
-    delay(60 * 1000);
+    delay(10 * 1000);
   } else {
     // Not connected yet. Wait 5 seconds before retrying.
     Serial.println("Connecting...");
