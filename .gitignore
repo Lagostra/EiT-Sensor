@@ -121,3 +121,6 @@ dmypy.json
 
 # API token
 api-token.txt
+
+# Data files
+data/
