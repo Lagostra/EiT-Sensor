@@ -1,1 +1,4 @@
 telenor-nbiot
+pandas
+numpy
+matplotlib
