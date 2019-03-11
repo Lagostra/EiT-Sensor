@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('data/data.csv', parse_dates=[0])
+data = pd.read_csv('data/data.csv', index_col=0, parse_dates=True)
 
-data.plot(x='time', y='co2')
+data.plot()
 plt.show()
